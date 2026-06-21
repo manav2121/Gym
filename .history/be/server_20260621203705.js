@@ -6,14 +6,17 @@ const cron = require("node-cron");
 
 const Member = require("./models/Member");
 
-const sendWhatsAppMessage =
-require("./config/whatsapp");
+//const sendWhatsAppMessage =
+//require("./config/whatsapp");
 
 dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+}));
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)
@@ -33,8 +36,19 @@ app.use(
   "/api/members",
   require("./routes/memberRoutes")
 );
-
-cron.schedule("* * * * *", async () => {
+app.use(
+  "/api/payments",
+  require("./routes/paymentRoutes")
+);
+app.use(
+  "/api/settings",
+  require("./routes/settingsRoutes")
+);
+app.use(
+  "/api/attendance",
+  require("./routes/attendanceRoutes")
+);
+cron.schedule("0 9 * * *", async () => {
 
   console.log(
     "Checking expiring memberships..."

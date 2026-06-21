@@ -6,8 +6,8 @@ const cron = require("node-cron");
 
 const Member = require("./models/Member");
 
-const sendWhatsAppMessage =
-require("./config/whatsapp");
+//const sendWhatsAppMessage =
+//require("./config/whatsapp");
 
 dotenv.config();
 
