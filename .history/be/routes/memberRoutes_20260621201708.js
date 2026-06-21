@@ -9,8 +9,8 @@ const express = require("express");
 const router = express.Router();
 router.use(authMiddleware);
 
-const Member = require("../models/member");
-const Payment = require("../models/Payment");
+const Member = require("../models/Member");
+const Payment = require("../models/payment");
 router.post("/add", async (req, res) => {
 
   try {
@@ -30,7 +30,20 @@ router.post("/add", async (req, res) => {
     const member = new Member(req.body);
 
     await member.save();
+       await Payment.create({
 
+  memberId: member._id,
+
+  memberName: member.name,
+
+  amount: member.paymentAmount,
+
+  plan: member.plan,
+
+  paymentStatus:
+    member.paymentStatus,
+
+});
     res.status(201).json({
       message: "Member added successfully",
       member,
@@ -59,7 +72,36 @@ router.get("/all", async (req, res) => {
     });
   }
 });
+router.get("/:id", async (
+  req,
+  res
+) => {
 
+  try {
+
+    const member =
+      await Member.findById(
+        req.params.id
+      );
+
+    if (!member) {
+
+      return res.status(404)
+      .json({
+        message:
+          "Member not found",
+      });
+    }
+
+    res.json(member);
+
+  } catch (error) {
+
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+});
 router.delete("/delete/:id", async (req, res) => {
 
   try {
@@ -88,7 +130,7 @@ router.put("/renew/:id", async (req, res) => {
       await Member.findById(req.params.id);
 
     const { plan } = req.body;
-
+const { amount } = req.body;
     const currentExpiry =
       new Date(member.expiryDate);
 
@@ -123,7 +165,19 @@ router.put("/renew/:id", async (req, res) => {
     member.notificationSent = false;
 
     await member.save();
+await Payment.create({
 
+  memberId: member._id,
+
+  memberName: member.name,
+
+  amount,
+
+  plan,
+
+  paymentStatus: "Paid",
+
+});
     res.json(member);
 
   } catch (error) {

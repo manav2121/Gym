@@ -10,7 +10,7 @@ const router = express.Router();
 router.use(authMiddleware);
 
 const Member = require("../models/Member");
-const Payment = require("../models/Payment");
+const Payment = require("../models/payment");
 router.post("/add", async (req, res) => {
 
   try {
