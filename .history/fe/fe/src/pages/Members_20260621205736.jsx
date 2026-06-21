@@ -39,7 +39,7 @@ function Members({
 
       const res =
         await axios.get(
-          "${API_URL}/api/members/all",
+          "http://localhost:5000/api/members/all",
           {
             headers: {
               Authorization:

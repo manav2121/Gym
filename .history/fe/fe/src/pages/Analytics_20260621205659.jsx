@@ -54,7 +54,7 @@ function Analytics({
 
       const res =
         await axios.get(
-          "${API_URL}/api/payments/stats",
+          "http://localhost:5000/api/payments/stats",
           {
             headers: {
               Authorization:

@@ -42,7 +42,7 @@ function Settings({
 
       const res =
         await axios.get(
-          "${API_URL}/api/settings",
+          "http://localhost:5000/api/settings",
           {
             headers: {
               Authorization:
@@ -70,7 +70,7 @@ function Settings({
         );
 
       await axios.put(
-        "${API_URL}/api/settings",
+        "http://localhost:5000/api/settings",
         settings,
         {
           headers: {

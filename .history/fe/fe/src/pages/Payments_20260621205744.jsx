@@ -35,7 +35,7 @@ function Payments({
 
       const res =
         await axios.get(
-          "${API_URL}/api/payments/all",
+          "http://localhost:5000/api/payments/all",
           {
             headers: {
               Authorization:

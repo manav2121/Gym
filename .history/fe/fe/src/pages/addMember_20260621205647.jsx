@@ -51,7 +51,7 @@ function AddMember({
 
       const res =
         await axios.get(
-          "${API_URL}/api/settings",
+          "http://localhost:5000/api/settings",
           {
             headers: {
               Authorization:
@@ -433,7 +433,7 @@ function AddMember({
         );
 
       await axios.post(
-        "${API_URL}/api/members/add",
+        "http://localhost:5000/api/members/add",
         formData,
         {
           headers: {

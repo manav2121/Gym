@@ -39,7 +39,7 @@ function Attendance({
 
       const res =
         await axios.get(
-          "${API_URL}/api/members/all",
+          "http://localhost:5000/api/members/all",
           authHeaders
         );
 
@@ -58,7 +58,7 @@ function Attendance({
 
       const res =
         await axios.get(
-          "${API_URL}/api/attendance/all",
+          "http://localhost:5000/api/attendance/all",
           authHeaders
         );
 
@@ -76,7 +76,7 @@ function Attendance({
     try {
 
       await axios.post(
-        `${API_URL}/api/attendance/checkin/${id}`,
+        `http://localhost:5000/api/attendance/checkin/${id}`,
         {},
         authHeaders
       );

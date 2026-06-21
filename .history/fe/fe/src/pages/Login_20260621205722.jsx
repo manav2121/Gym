@@ -27,7 +27,7 @@ function Login() {
 
       const res =
         await axios.post(
-          "${API_URL}/api/auth/login",
+          "http://localhost:5000/api/auth/login",
           {
             email,
             password,

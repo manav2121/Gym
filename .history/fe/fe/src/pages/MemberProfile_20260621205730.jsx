@@ -45,7 +45,7 @@ function MemberProfile({
 
       const res =
         await axios.get(
-          `${API_URL}/api/members/${id}`,
+          `http://localhost:5000/api/members/${id}`,
           authHeaders
         );
 
@@ -64,7 +64,7 @@ function MemberProfile({
 
       const res =
         await axios.get(
-          `${API_URL}/api/payments/member/${id}`,
+          `http://localhost:5000/api/payments/member/${id}`,
           authHeaders
         );
 
