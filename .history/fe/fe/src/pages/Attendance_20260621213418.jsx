@@ -58,7 +58,7 @@ function Attendance({
 
       const res =
         await axios.get(
-          `${API_URL}/api/attendance/all`,
+          "${API_URL}/api/attendance/all",
           authHeaders
         );
 

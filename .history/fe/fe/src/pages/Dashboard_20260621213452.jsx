@@ -105,7 +105,7 @@ function Dashboard() {
 
       const res =
         await axios.get(
-          `${API_URL}/api/payments/stats`,
+          "${API_URL}/api/payments/stats",
           authHeaders
         );
 
