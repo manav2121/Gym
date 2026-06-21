@@ -1,0 +1,7 @@
+2026/06/21-17:56:59.915 c64 Creating DB E:\gym\be\.wwebjs_auth\session\Default\Session Storage since it was missing.
+2026/06/21-17:56:59.939 c64 Reusing MANIFEST E:\gym\be\.wwebjs_auth\session\Default\Session Storage/MANIFEST-000001
+2026/06/21-17:56:59.942 c64 Recovering log #3
+2026/06/21-17:56:59.944 c64 Reusing old log E:\gym\be\.wwebjs_auth\session\Default\Session Storage/000003.log 
+2026/06/21-17:57:00.702 19ac Level-0 table #5: started
+2026/06/21-17:57:00.709 19ac Level-0 table #5: 14094 bytes OK
+2026/06/21-17:57:00.711 19ac Delete type=0 #3

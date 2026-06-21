@@ -1,0 +1,4 @@
+2026/06/21-17:56:59.838 4af4 Creating DB E:\gym\be\.wwebjs_auth\session\Default\Sync Data\LevelDB since it was missing.
+2026/06/21-17:56:59.854 4af4 Reusing MANIFEST E:\gym\be\.wwebjs_auth\session\Default\Sync Data\LevelDB/MANIFEST-000001
+2026/06/21-17:56:59.855 4af4 Recovering log #3
+2026/06/21-17:56:59.856 4af4 Reusing old log E:\gym\be\.wwebjs_auth\session\Default\Sync Data\LevelDB/000003.log 

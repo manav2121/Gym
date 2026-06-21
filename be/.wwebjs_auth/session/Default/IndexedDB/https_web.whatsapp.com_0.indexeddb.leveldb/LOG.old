@@ -1,0 +1,6 @@
+2026/06/21-17:57:01.344 4af4 Creating DB E:\gym\be\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb since it was missing.
+2026/06/21-17:57:01.362 4af4 Reusing MANIFEST E:\gym\be\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/06/21-17:57:01.362 4af4 Recovering log #1533
+2026/06/21-17:57:01.363 4af4 Reusing old log E:\gym\be\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/001533.log 
+2026/06/21-17:57:01.363 4af4 Delete type=2 #1532
+2026/06/21-17:57:01.364 4af4 Delete type=2 #1535
