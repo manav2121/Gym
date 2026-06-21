@@ -6,7 +6,7 @@ const authMiddleware =
 require("../middleware/authMiddleware");
 
 const Settings =
-require("../models/Settings");
+require("../models/settings");
 
 router.use(authMiddleware);
 
