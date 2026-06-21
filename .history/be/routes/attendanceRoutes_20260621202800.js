@@ -6,10 +6,10 @@ const authMiddleware =
 require("../middleware/authMiddleware");
 
 const Attendance =
-require("../models/Attendance");
+require("../models/attendance");
 
 const Member =
-require("../models/member");
+require("../models/Member");
 
 router.use(authMiddleware);
 
@@ -95,5 +95,35 @@ router.get("/all", async (req, res) => {
     });
   }
 });
+router.get("/stats", async (req, res) => {
 
+  try {
+
+    const attendance =
+      await Attendance.find();
+
+    const today =
+      new Date().toLocaleDateString();
+
+    const todayAttendance =
+      attendance.filter((a) =>
+        a.date === today
+      ).length;
+
+    res.json({
+
+      totalAttendance:
+        attendance.length,
+
+      todayAttendance,
+
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+});
 module.exports = router;

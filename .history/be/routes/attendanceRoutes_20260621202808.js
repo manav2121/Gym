@@ -6,7 +6,7 @@ const authMiddleware =
 require("../middleware/authMiddleware");
 
 const Attendance =
-require("../models/Attendance");
+require("../models/attendance");
 
 const Member =
 require("../models/member");
