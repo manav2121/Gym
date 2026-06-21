@@ -7,7 +7,7 @@ const authMiddleware =
 require("../middleware/authMiddleware");
 
 const Payment =
-require("../models/Payment");
+require("../models/payment");
 router.get("/recent", async (req, res) => {
 
   try {
