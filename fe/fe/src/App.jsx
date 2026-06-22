@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
-import AddMember from "./pages/AddMember";
+import AddMember from "./pages/addMember";
 import Login from "./pages/Login";
 
 import Members from "./pages/Members";
