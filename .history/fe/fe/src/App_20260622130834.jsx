@@ -1,3 +1,6 @@
+import MemberProfile
+from "./pages/MemberProfile";
+
 import { useState } from "react";
 import {
   BrowserRouter,
@@ -7,7 +10,7 @@ import {
 } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
-import AddMember from "./pages/AddMember";
+import AddMember from "./pages/addMember";
 import Login from "./pages/Login";
 
 import Members from "./pages/Members";
@@ -16,16 +19,24 @@ import Payments from "./pages/Payments";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
 
-function ProtectedRoute({ children }) {
+const ProtectedRoute = ({
+  children,
+}) => {
 
   const token =
-    localStorage.getItem("token");
+    localStorage.getItem(
+      "token"
+    );
 
-  return token
-    ? children
-    : <Navigate to="/login" />;
-}
+  if (!token) {
 
+    return (
+      <Navigate to="/login" />
+    );
+  }
+
+  return children;
+};
 function App()
  {
 const [sidebarOpen, setSidebarOpen] =
@@ -39,7 +50,19 @@ const [sidebarOpen, setSidebarOpen] =
           path="/login"
           element={<Login />}
         />
+<Route
+  path="/member/:id"
+  element={
+    <ProtectedRoute>
 
+      <MemberProfile
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
+
+    </ProtectedRoute>
+  }
+/>
         <Route
           path="/"
           element={
