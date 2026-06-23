@@ -88,7 +88,7 @@ const renewMembership = async () => {
       },
       authHeaders
     );
-console.log("Generating receipt...");
+
     generateReceipt({
 
       memberName: member.name,
