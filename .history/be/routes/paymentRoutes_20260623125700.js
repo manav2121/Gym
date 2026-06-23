@@ -53,7 +53,7 @@ router.get(
     try {
 
       const Payment =
-        require("../models/payment");
+        require("../models/Payment");
 
       const Member =
         require("../models/Member");
