@@ -378,8 +378,8 @@ function AddMember({
                     6 Months
                   </option>
 
-                  <option value="12 Months">
-                    12 Months
+                  <option value="1 Year">
+                    1 Year
                   </option>
 
                 </select>

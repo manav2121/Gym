@@ -191,7 +191,237 @@ function AddMember({
     setFormData(updatedData);
   };
 
-  
+  const generateReceipt = (
+    member
+  ) => {
+
+    const doc =
+      new jsPDF();
+
+    // Header Background
+    doc.setFillColor(
+      24,
+      24,
+      27
+    );
+
+    doc.rect(
+      0,
+      0,
+      210,
+      45,
+      "F"
+    );
+
+    // Title
+    doc.setTextColor(
+      255,
+      255,
+      255
+    );
+
+    doc.setFontSize(26);
+
+    doc.setFont(
+      "helvetica",
+      "bold"
+    );
+
+    doc.text(
+      "RAMESHT FITNESS ZONE",
+      20,
+      25
+    );
+
+    // Subtitle
+    doc.setFontSize(12);
+
+    doc.setTextColor(
+      220,
+      220,
+      220
+    );
+
+    doc.text(
+      "Professional Gym Management Receipt",
+      20,
+      35
+    );
+
+    // Receipt Title
+    doc.setTextColor(
+      24,
+      24,
+      27
+    );
+
+    doc.setFontSize(20);
+
+    doc.text(
+      "PAYMENT RECEIPT",
+      20,
+      65
+    );
+
+    // Receipt ID
+    const receiptId =
+      Math.floor(
+        100000 +
+        Math.random() * 900000
+      );
+
+    doc.setFontSize(11);
+
+    doc.setTextColor(
+      100,
+      100,
+      100
+    );
+
+    doc.text(
+      `Receipt ID: #${receiptId}`,
+      20,
+      75
+    );
+
+    doc.text(
+      `Date: ${new Date().toDateString()}`,
+      140,
+      75
+    );
+
+    // Table
+    autoTable(doc, {
+
+      startY: 90,
+
+      head: [
+
+        [
+          "Field",
+          "Details",
+        ],
+
+      ],
+
+      body: [
+
+        [
+          "Member Name",
+          member.name,
+        ],
+
+        [
+          "Phone Number",
+          member.phone,
+        ],
+
+        [
+          "Membership Plan",
+          member.plan,
+        ],
+
+        [
+          "Payment Status",
+          member.paymentStatus,
+        ],
+
+        [
+          "Amount Paid",
+          `Rs. ${member.paymentAmount}`,
+        ],
+
+        [
+          "Membership Start",
+          member.startDate,
+        ],
+
+        [
+          "Membership Expiry",
+          member.expiryDate,
+        ],
+
+      ],
+
+      theme: "grid",
+
+      headStyles: {
+
+        fillColor: [
+          24,
+          24,
+          27,
+        ],
+
+        textColor: [
+          255,
+          255,
+          255,
+        ],
+
+        fontStyle: "bold",
+
+      },
+
+      styles: {
+
+        fontSize: 12,
+
+        cellPadding: 5,
+
+      },
+
+      alternateRowStyles: {
+
+        fillColor: [
+          245,
+          245,
+          245,
+        ],
+
+      },
+
+    });
+
+    // Footer
+    doc.setDrawColor(
+      220,
+      220,
+      220
+    );
+
+    doc.line(
+      20,
+      250,
+      190,
+      250
+    );
+
+    doc.setFontSize(11);
+
+    doc.setTextColor(
+      120,
+      120,
+      120
+    );
+
+    doc.text(
+      "Thank you for choosing Ramesht Fitness Zone.",
+      20,
+      260
+    );
+
+    doc.text(
+      "Stay fit. Stay strong.",
+      20,
+      268
+    );
+
+    // Save
+    doc.save(
+      `${member.name}_Receipt.pdf`
+    );
+  };
 
   const handleSubmit =
   async (e) => {
@@ -216,7 +446,7 @@ function AddMember({
         }
       );
 
-     generateReceipt({
+      generateReceipt({
 
   memberName: formData.name,
 
@@ -227,7 +457,8 @@ function AddMember({
   ),
 
   paymentStatus:
-    formData.paymentStatus,
+    formData.paymentStatus ||
+    "Paid",
 
   paymentDate:
     new Date(),
@@ -378,8 +609,8 @@ function AddMember({
                     6 Months
                   </option>
 
-                  <option value="12 Months">
-                    12 Months
+                  <option value="1 Year">
+                    1 Year
                   </option>
 
                 </select>
