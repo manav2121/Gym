@@ -5,9 +5,9 @@ const router = express.Router();
 
 const authMiddleware =
 require("../middleware/authMiddleware");
-const Member =
-  require("../models/Member");
 
+const Payment =
+require("../models/payment");
 router.get("/recent", async (req, res) => {
 
   try {
@@ -57,49 +57,79 @@ router.get(
 
       const Member =
         require("../models/Member");
-const payments =
-  await Payment.find();
 
-const totalRevenue =
-  payments
-    .filter(
-      (p) =>
-        p.paymentStatus === "Paid"
-    )
-    .reduce(
-      (acc, curr) =>
-        acc + Number(curr.amount),
-      0
-    );
+      // ALL PAYMENTS
+      const payments =
+        await Payment.find();
 
-const currentMonth =
-  new Date().getMonth();
-
-const currentYear =
-  new Date().getFullYear();
-
-const monthlyRevenue =
-  payments
-    .filter((p) => {
-
-      const date =
-        new Date(
-          p.paymentDate
+      // TOTAL REVENUE
+      const totalRevenue =
+        payments
+        .filter(
+          (p) =>
+            p.paymentStatus
+            === "Paid"
+        )
+        .reduce(
+          (acc, curr) =>
+            acc +
+            Number(curr.amount),
+          0
         );
 
-      return (
-        p.paymentStatus === "Paid" &&
-        date.getMonth() === currentMonth &&
-        date.getFullYear() === currentYear
-      );
+      // PENDING REVENUE
+      const pendingRevenue =
+        payments
+        .filter(
+          (p) =>
+            p.paymentStatus
+            === "Pending"
+        )
+        .reduce(
+          (acc, curr) =>
+            acc +
+            Number(curr.amount),
+          0
+        );
 
-    })
-    .reduce(
-      (acc, curr) =>
-        acc + Number(curr.amount),
-      0
-    );
-      
+      // MONTHLY REVENUE
+      const currentMonth =
+        new Date().getMonth();
+
+      const currentYear =
+        new Date().getFullYear();
+
+      const monthlyRevenue =
+        payments
+        .filter((p) => {
+
+          const date =
+            new Date(
+              p.paymentDate
+            );
+
+          return (
+            p.paymentStatus
+            === "Paid"
+            &&
+            date.getMonth()
+            === currentMonth
+            &&
+            date.getFullYear()
+            === currentYear
+          );
+
+        })
+        .reduce(
+          (acc, curr) =>
+            acc +
+            Number(curr.amount),
+          0
+        );
+
+      // TOTAL TRANSACTIONS
+      const totalTransactions =
+        payments.length;
 
       // MONTHLY TREND
       const monthNames = [
@@ -167,13 +197,17 @@ const today = new Date();
 const activeMembers =
   members.filter(
     (m) =>
-      new Date(m.expiryDate) >= today
+      new Date(
+        m.expiryDate
+      ) >= today
   ).length;
 
 const expiredMembers =
   members.filter(
     (m) =>
-      new Date(m.expiryDate) < today
+      new Date(
+        m.expiryDate
+      ) < today
   ).length;
       const membershipPlans = [
 
@@ -220,23 +254,40 @@ const expiredMembers =
       ];
 
       // PAYMENT DISTRIBUTION
-      
+      const paymentDistribution = [
+
+        {
+          name: "Paid",
+          value:
+            totalRevenue,
+        },
+
+        {
+          name: "Pending",
+          value:
+            pendingRevenue,
+        },
+
+      ];
 
       res.json({
 
-  totalRevenue,
+        totalRevenue,
 
-  monthlyRevenue,
+        pendingRevenue,
 
-  activeMembers,
+        monthlyRevenue,
 
-  expiredMembers,
+        totalTransactions,
 
-  monthlyTrend,
+        monthlyTrend,
 
-  membershipPlans,
+        membershipPlans,
 
-});
+        paymentDistribution,
+
+      });
+
     } catch (error) {
 
       console.log(error);

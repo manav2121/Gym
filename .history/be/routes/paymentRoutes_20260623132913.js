@@ -5,9 +5,9 @@ const router = express.Router();
 
 const authMiddleware =
 require("../middleware/authMiddleware");
-const Member =
-  require("../models/Member");
 
+const Payment =
+require("../models/payment");
 router.get("/recent", async (req, res) => {
 
   try {

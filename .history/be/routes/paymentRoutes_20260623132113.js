@@ -5,9 +5,9 @@ const router = express.Router();
 
 const authMiddleware =
 require("../middleware/authMiddleware");
-const Member =
-  require("../models/Member");
 
+const Payment =
+require("../models/payment");
 router.get("/recent", async (req, res) => {
 
   try {
@@ -99,7 +99,21 @@ const monthlyRevenue =
         acc + Number(curr.amount),
       0
     );
-      
+      res.json({
+
+  totalRevenue,
+
+  monthlyRevenue,
+
+  activeMembers,
+
+  expiredMembers,
+
+  monthlyTrend,
+
+  membershipPlans,
+
+});
 
       // MONTHLY TREND
       const monthNames = [
@@ -162,19 +176,7 @@ const monthlyRevenue =
       // MEMBERSHIP PLAN DISTRIBUTION
       const members =
         await Member.find();
-const today = new Date();
 
-const activeMembers =
-  members.filter(
-    (m) =>
-      new Date(m.expiryDate) >= today
-  ).length;
-
-const expiredMembers =
-  members.filter(
-    (m) =>
-      new Date(m.expiryDate) < today
-  ).length;
       const membershipPlans = [
 
         {
@@ -220,23 +222,40 @@ const expiredMembers =
       ];
 
       // PAYMENT DISTRIBUTION
-      
+      const paymentDistribution = [
+
+        {
+          name: "Paid",
+          value:
+            totalRevenue,
+        },
+
+        {
+          name: "Pending",
+          value:
+            pendingRevenue,
+        },
+
+      ];
 
       res.json({
 
-  totalRevenue,
+        totalRevenue,
 
-  monthlyRevenue,
+        pendingRevenue,
 
-  activeMembers,
+        monthlyRevenue,
 
-  expiredMembers,
+        totalTransactions,
 
-  monthlyTrend,
+        monthlyTrend,
 
-  membershipPlans,
+        membershipPlans,
 
-});
+        paymentDistribution,
+
+      });
+
     } catch (error) {
 
       console.log(error);

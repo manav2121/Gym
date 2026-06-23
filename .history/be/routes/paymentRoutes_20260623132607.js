@@ -5,9 +5,9 @@ const router = express.Router();
 
 const authMiddleware =
 require("../middleware/authMiddleware");
-const Member =
-  require("../models/Member");
 
+const Payment =
+require("../models/payment");
 router.get("/recent", async (req, res) => {
 
   try {
@@ -224,19 +224,22 @@ const expiredMembers =
 
       res.json({
 
-  totalRevenue,
+        totalRevenue,
 
-  monthlyRevenue,
+        pendingRevenue,
 
-  activeMembers,
+        monthlyRevenue,
 
-  expiredMembers,
+        totalTransactions,
 
-  monthlyTrend,
+        monthlyTrend,
 
-  membershipPlans,
+        membershipPlans,
 
-});
+        paymentDistribution,
+
+      });
+
     } catch (error) {
 
       console.log(error);

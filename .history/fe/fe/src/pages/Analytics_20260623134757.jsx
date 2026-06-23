@@ -83,8 +83,7 @@ function Analytics({
     "#18181b",
     "#facc15",
   ];
-const distributionData =
-  stats.membershipPlans || [];
+
   return (
 
     <div className="min-h-screen bg-[#f4f4f5] text-zinc-900">
@@ -163,14 +162,14 @@ const distributionData =
 
                   <p className="text-zinc-500 text-sm">
 
-                    Active Members
+                    Pending Revenue
 
                   </p>
 
                   <h2 className="text-4xl font-bold mt-3 text-yellow-600">
 
                     ₹
-                    {stats.activeMembers || 0}
+                    {stats.pendingRevenue || 0}
 
                   </h2>
 
@@ -229,9 +228,10 @@ const distributionData =
 
                   </p>
 
-                 <h2 className="text-4xl font-bold mt-3">
-  {stats.expiredMembers || 0}
-</h2>
+                  <h2 className="text-4xl font-bold mt-3">
+
+stats.expiredMembers || 0
+                  </h2>
 
                 </div>
 
@@ -259,7 +259,8 @@ const distributionData =
 
                 <h2 className="text-3xl font-bold">
 
-Monthly Revenue Trend
+                  Revenue Overview
+
                 </h2>
 
                 <p className="text-zinc-500 mt-2">
@@ -287,7 +288,7 @@ Monthly Revenue Trend
                     />
 
                     <XAxis
-                      dataKey="month"
+                      dataKey="name"
                     />
 
                     <YAxis />
@@ -316,7 +317,8 @@ Monthly Revenue Trend
 
                 <h2 className="text-3xl font-bold">
 
-Membership Plan Distribution
+                  Revenue Distribution
+
                 </h2>
 
                 <p className="text-zinc-500 mt-2">
