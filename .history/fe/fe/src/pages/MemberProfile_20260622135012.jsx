@@ -249,60 +249,8 @@ async () => {
 
           </div>
 
-<div className="mt-10 bg-white border border-zinc-200 rounded-[40px] p-8 shadow-sm">
+          <div className="mt-14">
 
-  <h2 className="text-3xl font-bold mb-6 text-zinc-900">
-
-    Renew Membership
-
-  </h2>
-
-  <div className="flex flex-col md:flex-row gap-4">
-
-    <select
-      value={renewPlan}
-      onChange={(e) =>
-        setRenewPlan(
-          e.target.value
-        )
-      }
-      className="border border-zinc-300 rounded-2xl px-4 py-3"
-    >
-
-      <option>
-        1 Month
-      </option>
-
-      <option>
-        3 Months
-      </option>
-
-      <option>
-        6 Months
-      </option>
-
-      <option>
-        12 Months
-      </option>
-
-    </select>
-
-    <button
-      onClick={
-        renewMembership
-      }
-      className="bg-zinc-900 hover:bg-zinc-700 text-white px-6 py-3 rounded-2xl font-semibold"
-    >
-
-      Renew Membership
-
-    </button>
-
-  </div>
-
-</div>
-
-<div className="mt-14">
             <div className="flex items-center justify-between mb-6">
 
               <h2 className="text-3xl font-bold text-zinc-900">
