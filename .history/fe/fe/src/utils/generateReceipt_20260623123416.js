@@ -89,7 +89,7 @@ const generateReceipt = (payment) => {
 
       [
         "Amount Paid",
-        `payment.amount`
+        `₹${payment.amount}`
       ],
 
       [
