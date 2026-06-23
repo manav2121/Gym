@@ -11,7 +11,7 @@ import {
   CartesianGrid,
   LineChart,
   Line,
-Legend
+
 } from "recharts";
 
   
@@ -311,7 +311,7 @@ Monthly Revenue Trend
             </div>
 
             {/* PIE CHART */}
-<legend>
+
             <div className="bg-white border border-zinc-200 rounded-[32px] p-8 shadow-sm">
 
               <div className="mb-6">
@@ -323,7 +323,8 @@ Membership Plan Distribution
 
                 <p className="text-zinc-500 mt-2">
 
-Distribution of active membership plans
+                  Paid vs pending comparison
+
                 </p>
 
               </div>
@@ -373,7 +374,7 @@ Distribution of active membership plans
               </div>
 
             </div>
-</legend>
+
           </div>
 
         </div>
