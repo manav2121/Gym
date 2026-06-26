@@ -1,0 +1,139 @@
+const express = require("express");
+const mongoose = require("mongoose");
+
+const dotenv = require("dotenv");
+const cron = require("node-cron");
+
+const Member = require("./models/Member");
+
+const sendWhatsAppMessage =
+require("./config/whatsapp");
+
+dotenv.config();
+
+const app = express();
+
+const cors = require("cors");
+
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://gym1-dusky.vercel.app"
+  ],
+  credentials: true,
+}));
+app.use(express.json());
+
+mongoose.connect(process.env.MONGO_URI)
+.then(() => {
+  console.log("MongoDB Connected");
+})
+.catch((err) => {
+  console.log(err);
+});
+
+app.use(
+  "/api/auth",
+  require("./routes/authRoutes")
+);
+
+app.use(
+  "/api/members",
+  require("./routes/memberRoutes")
+);
+app.use(
+  "/api/payments",
+  require("./routes/paymentRoutes")
+);
+app.use(
+  "/api/settings",
+  require("./routes/settingsRoutes")
+);
+app.use(
+  "/api/attendance",
+  require("./routes/attendanceRoutes")
+);
+cron.schedule("0 9 * * *", async () => {
+
+  console.log(
+    "Checking expiring memberships..."
+  );
+
+  try {
+
+    const today = new Date();
+
+    const members = await Member.find();
+
+    for (let member of members) {
+
+      const diffTime =
+        member.expiryDate - today;
+
+      const diffDays = Math.ceil(
+        diffTime / (1000 * 60 * 60 * 24)
+      );
+
+      if (
+        diffDays <= 3 &&
+        !member.notificationSent
+      ) {
+
+       await sendWhatsAppMessage(
+
+member.phone,
+
+`🏋️ रामेष्ट Fitness Zone
+
+Hello ${member.name},
+
+Your membership expires on
+
+${member.expiryDate.toDateString()}.
+
+Please renew your membership to continue enjoying uninterrupted access.
+
+Thank you!`
+
+);
+await sendWhatsAppMessage(
+
+member.phone,
+
+`✅ Membership Renewed
+
+Hello ${member.name},
+
+Your membership has been renewed successfully.
+
+Plan:
+${member.plan}
+
+Expiry:
+${member.expiryDate.toDateString()}
+
+Thank you!`
+
+);
+        member.notificationSent = false;
+
+        await member.save();
+
+        console.log(
+          `Notification sent to ${member.name}`
+        );
+      }
+    }
+
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(
+    `Server running on ${PORT}`
+  );
+});
