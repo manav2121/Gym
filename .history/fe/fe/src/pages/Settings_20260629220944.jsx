@@ -70,7 +70,7 @@ function Settings({
         localStorage.getItem(
           "token"
         );
-console.log("Saving settings:", settings);
+
       await axios.put(
         `${API_URL}/api/settings`,
         settings,
@@ -320,7 +320,7 @@ console.log("Saving settings:", settings);
 
   <input
     type="text"
-    value={settings.groupLink || ""}
+    value={settings.https://chat.whatsapp.com/I2kLVRV0zUE7e3xPOFYAcN || ""}
     onChange={(e) =>
       setSettings({
         ...settings,

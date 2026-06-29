@@ -1,6 +1,6 @@
 const mongoose =
 require("mongoose");
-
+  
 const settingsSchema =
 new mongoose.Schema({
 
@@ -23,7 +23,10 @@ new mongoose.Schema({
     type: Number,
     default: 8000,
   },
-
+groupLink: {
+  type: String,
+  default: "",
+},
 });
 
 module.exports =

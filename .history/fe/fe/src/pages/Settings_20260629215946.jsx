@@ -70,7 +70,7 @@ function Settings({
         localStorage.getItem(
           "token"
         );
-console.log("Saving settings:", settings);
+
       await axios.put(
         `${API_URL}/api/settings`,
         settings,
@@ -104,7 +104,28 @@ console.log("Saving settings:", settings);
           setSidebarOpen
         }
       />
+<div className="mt-8 bg-white border border-zinc-200 rounded-[32px] p-7 shadow-sm">
 
+  <p className="text-zinc-500 text-sm mb-2">
+
+    WhatsApp Group Link
+
+  </p>
+
+  <input
+    type="text"
+    value={settings.groupLink || ""}
+    onChange={(e) =>
+      setSettings({
+        ...settings,
+        groupLink: e.target.value,
+      })
+    }
+    placeholder="https://chat.whatsapp.com/..."
+    className="w-full bg-zinc-100 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-zinc-300"
+  />
+
+</div>
       <div className="w-full px-8 pt-28 pb-10">
 
         <div className="max-w-6xl mx-auto">

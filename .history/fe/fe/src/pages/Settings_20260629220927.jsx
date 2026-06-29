@@ -70,7 +70,7 @@ function Settings({
         localStorage.getItem(
           "token"
         );
-console.log("Saving settings:", settings);
+
       await axios.put(
         `${API_URL}/api/settings`,
         settings,
