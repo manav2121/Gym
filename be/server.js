@@ -124,7 +124,16 @@ Thank you!`
 
 const PORT =
 process.env.PORT || 5000;
+app.get("/test-wa", async (req, res) => {
 
+  await sendWhatsAppMessage(
+    "9142762654",
+    "Test message from Gym App 🚀"
+  );
+
+  res.send("Message sent");
+
+});
 app.listen(PORT, () => {
 
   console.log(

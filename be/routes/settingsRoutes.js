@@ -16,7 +16,10 @@ router.get("/", async (req, res) => {
 
     let settings =
       await Settings.findOne();
-
+ console.log(
+      "GET Settings:",
+      settings
+    );
     if (!settings) {
 
       settings =
@@ -59,8 +62,11 @@ router.put("/", async (req, res) => {
 
       settings.oneYearPrice =
         req.body.oneYearPrice;
-    }
 
+        settings.groupLink =
+  req.body.groupLink;
+    }
+console.log("Before Save:", settings);
     await settings.save();
 
     res.json({

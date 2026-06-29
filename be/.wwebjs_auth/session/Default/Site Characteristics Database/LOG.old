@@ -1,4 +1,3 @@
-2026/06/21-17:56:59.844 4e94 Creating DB E:\gym\be\.wwebjs_auth\session\Default\Site Characteristics Database since it was missing.
-2026/06/21-17:56:59.865 4e94 Reusing MANIFEST E:\gym\be\.wwebjs_auth\session\Default\Site Characteristics Database/MANIFEST-000001
-2026/06/21-17:56:59.866 4e94 Recovering log #3
-2026/06/21-17:56:59.866 4e94 Reusing old log E:\gym\be\.wwebjs_auth\session\Default\Site Characteristics Database/000003.log 
+2026/06/29-23:54:56.005 5290 Reusing MANIFEST E:\gym\be\.wwebjs_auth\session\Default\Site Characteristics Database/MANIFEST-000001
+2026/06/29-23:54:56.006 5290 Recovering log #3
+2026/06/29-23:54:56.006 5290 Reusing old log E:\gym\be\.wwebjs_auth\session\Default\Site Characteristics Database/000003.log 

@@ -27,6 +27,7 @@ router.use(authMiddleware);
 
 router.post("/add", async (req, res) => {
 
+  console.log("ADD MEMBER ROUTE HIT");
   try {
 
     const { error } =
@@ -124,12 +125,13 @@ router.post("/add", async (req, res) => {
         "Paid",
 
     });
-
+console.log("Phone:", member.phone);
+console.log("Group Link:", settings.groupLink);
     try {
-
+console.log("Before WhatsApp");
       await sendWhatsAppMessage(
 
-        member.phone,
+  member.phone,
 
 `🏋️ *Welcome to रामेष्ट Fitness Zone*
 
@@ -144,9 +146,13 @@ Your membership has been activated successfully.
 📅 Expiry Date:
 ${new Date(member.expiryDate).toDateString()}
 
+📢 Join our Gym WhatsApp Group:
+
+${settings.groupLink}
+
 We wish you a healthy fitness journey! 💪`
 
-      );
+);
 
     }
 
@@ -342,7 +348,8 @@ router.put("/renew/:id", async (req, res) => {
 
     const settings =
       await Settings.findOne();
-
+console.log("Settings:", settings);
+console.log("Group Link:", settings?.groupLink);
     if (!settings) {
 
       return res.status(500).json({
