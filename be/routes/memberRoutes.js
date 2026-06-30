@@ -493,26 +493,22 @@ console.log("Group Link:", settings?.groupLink);
     try {
 
       await sendBotMessage(
-
-        member.phone,
-
-`✅ *Membership Renewed*
+  member.phone,
+`🏋️ Welcome to रामेष्ट Fitness Zone!
 
 Hello ${member.name},
 
-Your membership has been renewed successfully.
+Your membership has been activated successfully.
 
 📋 Plan: ${plan}
-
 💰 Amount Paid: ₹${amount}
+📅 Expiry Date: ${member.expiryDate.toDateString()}
 
-📅 New Expiry Date:
-${member.expiryDate.toDateString()}
+Join our WhatsApp group:
+${settings.groupLink}
 
-Thank you for choosing
-*रामेष्ट Fitness Zone!* 💪`
-
-      );
+Stay connected for updates and announcements. 💪`
+);
 
     }
 
