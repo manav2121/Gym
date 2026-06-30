@@ -1,3 +1,22 @@
-2026/06/29-23:54:59.584 69c Reusing MANIFEST E:\gym\be\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2026/06/29-23:54:59.585 69c Recovering log #2345
-2026/06/29-23:54:59.614 69c Reusing old log E:\gym\be\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/002345.log 
+2026/06/29-23:59:10.890 1864 Reusing MANIFEST E:\gym\be\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/06/29-23:59:10.891 1864 Recovering log #2345
+2026/06/29-23:59:10.972 1864 Reusing old log E:\gym\be\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/002345.log 
+2026/06/29-23:59:21.057 1864 Level-0 table #2355: started
+2026/06/29-23:59:21.095 1864 Level-0 table #2355: 1243568 bytes OK
+2026/06/29-23:59:21.097 1864 Delete type=0 #2345
+2026/06/29-23:59:22.285 1864 Compacting 1@1 + 6@2 files
+2026/06/29-23:59:22.425 1864 Generated table #2356@1: 74182 keys, 2220448 bytes
+2026/06/29-23:59:22.521 1864 Generated table #2357@1: 48675 keys, 2228135 bytes
+2026/06/29-23:59:22.651 1864 Generated table #2358@1: 64063 keys, 2230717 bytes
+2026/06/29-23:59:22.732 1864 Generated table #2359@1: 28573 keys, 2183569 bytes
+2026/06/29-23:59:22.807 1864 Generated table #2360@1: 19537 keys, 2192211 bytes
+2026/06/29-23:59:22.864 1864 Generated table #2361@1: 22132 keys, 2050090 bytes
+2026/06/29-23:59:22.864 1864 Compacted 1@1 + 6@2 files => 13105170 bytes
+2026/06/29-23:59:22.865 1864 compacted to: files[ 0 0 6 0 0 0 0 ]
+2026/06/29-23:59:22.866 1864 Delete type=2 #2347
+2026/06/29-23:59:22.866 1864 Delete type=2 #2348
+2026/06/29-23:59:22.866 1864 Delete type=2 #2349
+2026/06/29-23:59:22.866 1864 Delete type=2 #2350
+2026/06/29-23:59:22.866 1864 Delete type=2 #2351
+2026/06/29-23:59:22.866 1864 Delete type=2 #2352
+2026/06/29-23:59:22.866 1864 Delete type=2 #2355
