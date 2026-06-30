@@ -143,7 +143,7 @@ app.get("/test-bot", async (req, res) => {
 
     const result =
       await sendBotMessage(
-        "919798926145",
+        "9798926145",
         "Message from Render 🚀"
       );
 
