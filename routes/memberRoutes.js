@@ -4,8 +4,7 @@ require("../models/settings");
 const Payment =
 require("../models/payment");
 
-const sendWhatsAppMessage =
-require("../config/whatsapp");
+
 
 router.put("/renew/:id", async (req, res) => {
 
