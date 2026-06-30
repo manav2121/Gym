@@ -133,7 +133,7 @@ await Payment.create({
 
 try {
 
-  await sendWhatsAppMessage(
+  await sendBotMessage(
 
     member.phone,
 ```
