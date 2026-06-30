@@ -5,7 +5,6 @@ const generateReceipt = (payment) => {
 
   const doc = new jsPDF();
 
-  // Header
   doc.setFillColor(24, 24, 27);
   doc.rect(0, 0, 210, 45, "F");
 
@@ -22,19 +21,15 @@ const generateReceipt = (payment) => {
     35
   );
 
-  // Title
   doc.setTextColor(24, 24, 27);
   doc.setFontSize(20);
   doc.text("PAYMENT RECEIPT", 20, 65);
 
-  // Receipt Details
   const receiptId =
-    payment._id
-      ? payment._id.slice(-6).toUpperCase()
-      : Math.floor(
-          100000 +
-          Math.random() * 900000
-        );
+    Math.floor(
+      100000 +
+      Math.random() * 900000
+    );
 
   doc.setFontSize(11);
   doc.setTextColor(100, 100, 100);
@@ -51,13 +46,16 @@ const generateReceipt = (payment) => {
     75
   );
 
-  // Table
   autoTable(doc, {
+
     startY: 90,
 
-    head: [["Field", "Details"]],
+    head: [
+      ["Field", "Details"]
+    ],
 
     body: [
+
       [
         "Member Name",
         payment.memberName
@@ -70,7 +68,7 @@ const generateReceipt = (payment) => {
 
       [
         "Amount Paid",
-        `${payment.amount}`
+        `Rs. ${payment.amount}`
       ],
 
       [
@@ -86,7 +84,6 @@ const generateReceipt = (payment) => {
         ).toDateString()
       ],
 
-      
     ],
 
     theme: "grid",
@@ -101,9 +98,9 @@ const generateReceipt = (payment) => {
       fontSize: 12,
       cellPadding: 5,
     },
+
   });
 
-  // Footer
   doc.line(
     20,
     250,
@@ -131,7 +128,6 @@ const generateReceipt = (payment) => {
     268
   );
 
-  // Save PDF
   doc.save(
     `${payment.memberName}_Receipt.pdf`
   );
