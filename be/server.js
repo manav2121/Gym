@@ -6,8 +6,7 @@ const cors = require("cors");
 const sendBotMessage =
 require("./config/sendBotMessage");
 const Member = require("./models/Member");
-const sendWhatsAppMessage =
-require("./config/whatsapp");
+
 
 dotenv.config();
 
@@ -85,7 +84,7 @@ cron.schedule("0 9 * * *", async () => {
         !member.notificationSent
       ) {
 
-        await sendWhatsAppMessage(
+        await sendBotMessage(
 
           member.phone,
 
