@@ -16,8 +16,8 @@ require("../models/payment");
 const Settings =
 require("../models/settings");
 
-const sendWhatsAppMessage =
-require("../config/whatsapp");
+const sendBotMessage =
+require("../config/sendBotMessage");
 
 router.use(authMiddleware);
 
@@ -129,7 +129,7 @@ console.log("Phone:", member.phone);
 console.log("Group Link:", settings.groupLink);
     try {
 console.log("Before WhatsApp");
-      await sendWhatsAppMessage(
+      await sendBotMessage(
 
   member.phone,
 
@@ -492,7 +492,7 @@ console.log("Group Link:", settings?.groupLink);
 
     try {
 
-      await sendWhatsAppMessage(
+      await sendBotMessage(
 
         member.phone,
 
