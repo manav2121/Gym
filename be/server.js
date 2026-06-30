@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cron = require("node-cron");
 const cors = require("cors");
-
+const sendBotMessage =
+require("./config/sendBotMessage");
 const Member = require("./models/Member");
 const sendWhatsAppMessage =
 require("./config/whatsapp");
@@ -135,6 +136,27 @@ app.get("/test-wa", async (req, res) => {
 );
 
   res.send("Message sent");
+
+});
+app.get("/test-bot", async (req, res) => {
+
+  try {
+
+    const result =
+      await sendBotMessage(
+        "919798926145",
+        "Message from Render 🚀"
+      );
+
+    res.json(result);
+
+  } catch (error) {
+
+    res.status(500).json({
+      error: error.message,
+    });
+
+  }
 
 });
 app.listen(PORT, () => {
