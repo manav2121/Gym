@@ -60,8 +60,7 @@ function Login() {
           </h2>
 
           <p className="mt-2 text-zinc-500 text-center max-w-sm">
-            Please wait while we securely log you into your account.
-            <br />
+            
             This may take a few moments if the server is waking up.
           </p>
 
